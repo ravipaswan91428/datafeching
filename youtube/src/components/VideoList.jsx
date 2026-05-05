@@ -5,7 +5,7 @@ const VideoList = ({ videos }) => {
     <div className='video-container'>
       {videos.map((video, index) => (
         <VideoCard 
-          key={video.id || video.etag || index}
+          key={video.id || index}
           video={video} 
         />
       ))}
