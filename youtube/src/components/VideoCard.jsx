@@ -1,32 +1,27 @@
-import React from 'react'
+function VideoCard({ video }) {
 
-const videoCard = ({video}) => {
+  const snippet = video?.items?.snippet;
+  const statistics = video?.items?.statistics;
 
-    const snippet = video.snippet;
-    const statistics = video.statistics;
-
-    if (!snippet) return null;
+  if (!snippet) return <div>Loading...</div>;
 
   return (
-    <>
-      <div>
-        <img 
-            className='thumabnail' 
-            src={snippet.thumabnail.medium.url}
-            alt="thumbnail" />
+    <div className="video-card">
+      <img
+        className="thumbnail"
+        src={snippet?.thumbnails?.medium?.url}
+        alt="thumbnail"
+      />
+
+      <div className="video-info">
+        <h3 className="title">{snippet?.title}</h3>
+        <p className="channel">{snippet?.channelTitle}</p>
+        <p className="meta">
+          {statistics?.viewCount} views
+        </p>
       </div>
-      <div className='side-disc'>
-        <div className='title_disc'>
-            <h3 className="title">{snippet.title}</h3>
-            <p className="channel">{snippet.channelTitle}</p>        
-        </div>
-        <div className='channel'>
-            <p>{snippet.channelTitle}</p>
-            <p>{statistics.viewCount} views</p>
-        </div>
-      </div>
-    </>
-  )
+    </div>
+  );
 }
 
-export default videoCard
+export default VideoCard;

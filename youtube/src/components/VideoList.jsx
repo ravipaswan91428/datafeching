@@ -1,17 +1,16 @@
-import React from 'react'
-import VideoCard from './VideoCard'
+import VideoCard  from "./VideoCard";
 
-const VideoList = ({ video }) => {
+const VideoList = ({ videos }) => {
   return (
     <div className='video-container'>
-      {video.map((videos) => {
+      {videos.map((video, index) => (
         <VideoCard 
-          key={video.id} 
+          key={video.id || video.etag || index}
           video={video} 
         />
-    })}
+      ))}
     </div>
   )
 }
 
-export default VideoList
+export default VideoList;

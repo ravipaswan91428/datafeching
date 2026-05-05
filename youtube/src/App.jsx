@@ -1,24 +1,34 @@
-import { useEffect, useState } from 'react'
-import VideoList from './components/VideoList'
+import { useEffect, useState } from "react";
+import VideoList from "./components/VideoList";
+import "./App.css";
 
 function App() {
-  const [video, setVideo] = useState([])
+  const [videos, setVideos] = useState([]);
 
-  useEffect(()=>{
-    fetch('https://api.freeapi.app/api/v1/public/youtube/videos')
-    .then((res)=>res.json())
-    .then((data)=>{
-      setVideo(data.data.data)
-      console.log(data)
-    })
-  },[])
+  useEffect(() => {
+    fetchVideos();
+  }, []);
+
+  const fetchVideos = async () => {
+    try {
+      const res = await fetch(
+        "https://api.freeapi.app/api/v1/public/youtube/videos"
+      );
+      const data = await res.json();
+
+      setVideos(data.data.data);
+      console.log(data.data.data)
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return (
-    <>
-      <h1>Youtube Clone</h1>
-      <VideoList  video={video} />
-    </>
-  )
+    <div>
+      <h1 className="heading">YouTube Clone</h1>
+      <VideoList videos={videos} />
+    </div>
+  );
 }
 
-export default App
+export default App;
