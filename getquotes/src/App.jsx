@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import QuotesList from './conponents/QuotesList'
+import './App.css'
 
 function App() {
 
@@ -16,10 +17,15 @@ function App() {
   
 
   return (
-    <>
-    <h1>Quotes of the day</h1>
-      <QuotesList quotes={quotes}/>
-    </>
+    <div className="app">
+      <header className="app-header">
+        <h1 className="app-title">Quotes of the Day</h1>
+        <p className="app-subtitle">Inspiring words for tech enthusiasts</p>
+      </header>
+      <main className="app-main">
+        <QuotesList quotes={quotes}/>
+      </main>
+    </div>
   )
 }
 

@@ -2,9 +2,9 @@ import QuotesCard from './QuotesCard'
 
 const QuotesList = ({quotes}) => {
   return (
-    <div>
-        {quotes.map((quotes)=(
-            <QuotesCard key={quotes.id} quotes={quotes}/>
+    <div className="quotes-container">
+        {quotes.map((quote)=>(
+            <QuotesCard key={quote.id} quotes={quote}/>
         ))}
     </div>
   )
