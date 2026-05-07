@@ -1,9 +1,11 @@
 import ProductCards from './productCards'
 
-function ProductList ({ product }) {
+function ProductList ({ products }) {
   return (
-    <div>
-        <ProductCards product={product} />
+    <div className="products-grid">
+      {products.map((product)=>(
+        <ProductCards key={product.id} product={product} />
+      ))}
     </div>
   )
 }
