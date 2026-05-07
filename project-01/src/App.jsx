@@ -15,17 +15,19 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1>UserList</h1>
-
-      {user.map((users) => (
-        <Cards
-          name={users.name}
-          email={users.email}
-          phone={users.phone}
-          city={users.address?.city}
-          company={users.company?.name}
-        />
-      ))}
+      <h1>User Directory</h1>
+      <div className="user-grid">
+        {user.map((users) => (
+          <Cards
+            key={users.id}
+            name={users.name}
+            email={users.email}
+            phone={users.phone}
+            city={users.address?.city}
+            company={users.company?.name}
+          />
+        ))}
+      </div>
     </div>
   )
 }
